@@ -18,6 +18,12 @@ public class Task4 implements Task {
         Person a = new Person("Иван", "Иванов");
         Person b = new Person("Иван", "Иванов");
         boolean isEqual = a.equals(b);
+        if(isEqual){
+            System.out.println("Имена одинаковые");
+        } else {
+            System.out.println("Имена разные");
+        }
+        
         /*
          * TODO(Студент): Выполните задание №4
          *

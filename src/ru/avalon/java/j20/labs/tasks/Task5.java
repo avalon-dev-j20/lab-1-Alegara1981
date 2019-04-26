@@ -1,5 +1,8 @@
 package ru.avalon.java.j20.labs.tasks;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.HashSet;
 import ru.avalon.java.j20.labs.Task;
 import ru.avalon.java.j20.labs.core.RandomArrayFactory;
 
@@ -23,11 +26,19 @@ public class Task5 implements Task {
      */
     @Override
     public void run() {
-        final int[] array = arrayFactory.getInstance(20);
+        final Integer[] array = arrayFactory.getInstance(20);
 
-        List<Integer> list = null;
-
-        Set<Integer> set = null;
+        List<Integer> list = new ArrayList<>();
+        
+        Set<Integer> set = new HashSet<>();
+        for(Integer i : array){
+        list.add(i); 
+        set.add(i);
+        
+        }
+        System.out.println(list.size());
+        System.out.println(set.size());
+        
 
         /**
          * TODO(Студент): Выполните задание №5
@@ -41,4 +52,6 @@ public class Task5 implements Task {
          *    выполнения задания.
          */
     }
+
+  
 }
