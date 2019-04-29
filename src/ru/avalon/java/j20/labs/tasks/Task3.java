@@ -3,6 +3,7 @@ package ru.avalon.java.j20.labs.tasks;
 import ru.avalon.java.j20.labs.Task;
 
 import java.util.Iterator;
+import ru.avalon.java.j20.labs.models.Fibonacci;
 
 /**
  * Задание №3
@@ -10,9 +11,21 @@ import java.util.Iterator;
  * <p>Тема: "Изучение интерфейсов {@link Iterable} и {@link Iterator}".
  */
 public class Task3 implements Task {
+    
+    
 
     @Override
     public void run() {
+        
+       Fibonacci fib = new Fibonacci(20);
+        int sum = 0;
+            for (Integer integer : fib) {//Бежим по массиву чисел.
+                sum += integer;
+                
+            }
+     fib.getArray(); //Возвращает массив 20 чисел.
+    }
+
         /*
          * TODO(Студент): Выполнить задание №3
          *
@@ -35,4 +48,4 @@ public class Task3 implements Task {
          *    выполнения задания.
          */
     }
-}
+

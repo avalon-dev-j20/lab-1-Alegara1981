@@ -1,6 +1,7 @@
 package ru.avalon.java.j20.labs.models;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  * Модель получения последовательности чисел Фибоначчи.
@@ -17,12 +18,35 @@ import java.util.Iterator;
  * @see <a href="https://ru.wikipedia.org/wiki/%D0%A7%D0%B8%D1%81%D0%BB%D0%B0_%D0%A4%D0%B8%D0%B1%D0%BE%D0%BD%D0%B0%D1%87%D1%87%D0%B8">Числа Фибоначчи</a>
  */
 public class Fibonacci implements Iterable<Integer> {
+    
+    private final Integer[] array;
+
+    public Fibonacci(int size) {
+     this.array = new Integer[size];
+    if (array.length > 1) {
+        array[0] = 0;
+        if (array.length > 2) {
+            array[1] = 1;
+            for (int i = 2; i < array.length; i++) {
+                array[i] = array[i - 1] + array[i - 2];
+            }
+        }
+    }
+     
+     
+    }
+    
+    
+    
+    
 
     /**
      * Итератор, выполняющий обход последовательности
      * чисел Фибоначчи.
      */
-    private static class FibonacciIterator implements Iterator<Integer> {
+    private class FibonacciIterator implements Iterator<Integer> {
+        private int currentIndex = 0;
+        
 
         /**
          * Определяет, есть ли следующее значение
@@ -34,7 +58,7 @@ public class Fibonacci implements Iterable<Integer> {
          */
         @Override
         public boolean hasNext() {
-            throw new UnsupportedOperationException("Not implemented yet!");
+            return currentIndex < array.length; //&& array[currentIndex] != null;
         }
 
         /**
@@ -45,7 +69,10 @@ public class Fibonacci implements Iterable<Integer> {
          */
         @Override
         public Integer next() {
-            throw new UnsupportedOperationException("Not implemented yet!");
+            if (currentIndex >= array.length)
+        throw new NoSuchElementException();
+    return array[currentIndex++];
+           
         }
     }
 
@@ -59,4 +86,10 @@ public class Fibonacci implements Iterable<Integer> {
     public Iterator<Integer> iterator() {
         return new FibonacciIterator();
     }
+      public Integer[] getArray() {
+        return array;
+    }
+  
+    
+    
 }
